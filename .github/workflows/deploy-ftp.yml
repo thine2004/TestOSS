@@ -18,16 +18,16 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         
-        # InfinityFree bắt buộc dùng giao thức FTP thường (không an toàn bằng SFTP nhưng Free chỉ có vậy)
-        protocol: ftp
-        
-        # Lấy toàn bộ code ở thư mục gốc
+        # --- CÁC DÒNG QUAN TRỌNG ĐỂ FIX LỖI TIMEOUT ---
+        port: 21              # Chỉ định rõ cổng 21
+        protocol: ftp         # Dùng giao thức FTP thường
+        security: false       # QUAN TRỌNG NHẤT: Tắt SSL để không bị treo khi kết nối
+        timeout: 30000        # Tăng thời gian chờ lên 30 giây (mặc định là thấp hơn)
+        # -----------------------------------------------
+
         local-dir: ./
+        server-dir: ./htdocs/ 
         
-        # QUAN TRỌNG: InfinityFree dùng thư mục htdocs
-        server-dir: ./htdocs/
-        
-        # Loại bỏ các file không cần thiết
         exclude: |
           **/.git*
           **/.git*/**
