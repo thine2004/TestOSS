@@ -11,18 +11,20 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
     
-- name: 📂 Sync files
+    - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         
-        port: 21
-        protocol: ftp
-        security: loose       # <--- SỬA DÒNG NÀY (Từ false thành loose)
-        timeout: 30000
-        
+        # --- CÁC DÒNG QUAN TRỌNG ĐỂ FIX LỖI TIMEOUT ---
+        port: 21              # Chỉ định rõ cổng 21
+        protocol: ftp         # Dùng giao thức FTP thường
+        security: loose       # QUAN TRỌNG NHẤT: Tắt SSL để không bị treo khi kết nối
+        timeout: 30000        # Tăng thời gian chờ lên 30 giây (mặc định là thấp hơn)
+        # -----------------------------------------------
+
         local-dir: ./
         server-dir: ./htdocs/ 
         
