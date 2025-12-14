@@ -1,0 +1,146 @@
+/* UNIQUE STYLE: Modern Violet/Indigo (Glassmorphism & Clean) */
+:root {
+    --primary: #6366f1; /* Indigo 500 */
+    --primary-dark: #4f46e5; /* Indigo 600 */
+    --secondary: #a855f7; /* Purple 500 */
+    --bg-body: #f3f4f6; /* Gray 100 */
+    --bg-sidebar: #ffffff;
+    --text-main: #111827;
+    --text-light: #6b7280;
+    --glass-bg: rgba(255, 255, 255, 0.95);
+    --radius: 12px;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Poppins', sans-serif; background: var(--bg-body); color: var(--text-main); min-height: 100vh; }
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+
+/* LAYOUT: Sidebar + Main Content */
+.app-container { display: flex; width: 100%; }
+
+/* SIDEBAR */
+.sidebar {
+    width: 260px;
+    background: var(--bg-sidebar);
+    height: 100vh;
+    position: fixed;
+    border-right: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    z-index: 50;
+}
+
+.brand {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+}
+
+.menu { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.menu-item a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    color: var(--text-light);
+    font-weight: 500;
+}
+.menu-item a:hover, .menu-item a.active {
+    background: #eef2ff;
+    color: var(--primary);
+}
+
+.user-profile {
+    margin-top: auto;
+    padding: 1rem;
+    background: #f9fafb;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--primary); color: white; display: grid; place-items: center; font-weight: bold; }
+
+/* MAIN CONTENT */
+.main-content {
+    margin-left: 260px;
+    flex: 1;
+    padding: 2rem;
+}
+
+/* CARDS */
+.card {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: transform 0.2s;
+}
+.card:hover { transform: translateY(-3px); }
+
+/* GRID */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+/* BUTTONS */
+.btn {
+    padding: 0.75rem 1.5rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.btn:hover { background: var(--primary-dark); }
+.btn-outline { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
+.btn-outline:hover { background: var(--primary); color: white; }
+
+/* TEST INTERFACE */
+.question-block {
+    background: white;
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+.option-label {
+    display: block;
+    padding: 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    margin-bottom: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.option-label:hover { border-color: var(--primary); background: #eef2ff; }
+.option-label input { margin-right: 1rem; }
+
+/* UTILS */
+.text-primary { color: var(--primary); }
+.badge { padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; background: #e0e7ff; color: var(--primary-dark); }
+.progress-bar { height: 10px; background: #e5e7eb; border-radius: 5px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--primary); width: 0%; transition: width 0.5s; }
+
+/* LOGIN */
+.auth-wrapper {
+    display: flex; height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    align-items: center; justify-content: center; width: 100%;
+}
+.auth-box {
+    background: white; padding: 3rem; border-radius: 20px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    width: 100%; max-width: 420px;
+}

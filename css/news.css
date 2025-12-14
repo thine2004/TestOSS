@@ -1,0 +1,12 @@
+.news-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.news-content p {
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    color: #374151;
+}

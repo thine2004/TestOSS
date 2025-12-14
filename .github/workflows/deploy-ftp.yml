@@ -1,0 +1,36 @@
+name: Deploy to InfinityFree
+on:
+  push:
+    branches:
+      - main
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        
+        # InfinityFree bắt buộc dùng giao thức FTP thường (không an toàn bằng SFTP nhưng Free chỉ có vậy)
+        protocol: ftp
+        
+        # Lấy toàn bộ code ở thư mục gốc
+        local-dir: ./
+        
+        # QUAN TRỌNG: InfinityFree dùng thư mục htdocs
+        server-dir: ./htdocs/
+        
+        # Loại bỏ các file không cần thiết
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/.github/**
+          **/Database/**
+          **/README.md
