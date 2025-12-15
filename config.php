@@ -3,7 +3,7 @@
 define('DB_HOST', 'sql213.infinityfree.com');
 define('DB_USER', 'if0_40682007');
 define('DB_PASS', 'ouPwJxalGXJLnFD');
-define('DB_NAME', 'if0_40682007_test_oss');
+define('DB_NAME', 'if0_40682007_english_practice');
 
 try {
     $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
